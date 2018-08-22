@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="/static/layui/css/layui.css">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">设备库存管理系统</div>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          {{username}}
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">修改密码</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退出</a></li>
+    </ul>
+  </div>
+
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="/">首页</a>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">项目管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">项目登记</a></dd>
+            <dd><a href="javascript:;">状态跟进</a></dd>
+            <dd><a href="javascript:;">项目列表</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item layui-nav-itemed">
+          <a href="javascript:;">库存管理</a>
+          <dl class="layui-nav-child">
+            <dd><a href="add">入库登记</a></dd>
+            <dd><a href="edit">出库登记</a></dd>
+            <dd><a href="gdm">型号管理</a></dd>
+            <dd><a href="find">库存查询</a></dd>
+            <dd><a href="count">库存统计</a></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">{% block content %}{% endblock %}</div>
+
+  </div>
+
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © 福建星网信通软件有限公司
+  </div>
+</div>
+<script src="/static/layui/layui.js"></script>
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+</script>
+</body>
+</html>

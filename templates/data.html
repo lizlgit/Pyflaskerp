@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}库存查询{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="/static/layui/css/layui.css"  media="all">
+</head>
+<body>
+
+<table class="layui-hide" id="test"></table>
+
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+
+<script>
+layui.use('table', function(){
+  var table = layui.table;
+
+  table.render({
+    elem: '#test'
+    ,url:'/userlist/'
+    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+    ,cols: [[
+      {field:'user',title: '用户', width:160}
+      ,{field:'code',title: '代号', width:160}
+      ,{field:'telephone',title: '电话', width:160}
+      ,{field:'create_time',title: '更新时间', width:160}
+    ]]
+  });
+});
+</script>
+
+</body>
+</html>
+{% endblock %}
