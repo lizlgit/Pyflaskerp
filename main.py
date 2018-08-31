@@ -11,12 +11,12 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"  # 定义登录的 视图
 login_manager.login_message = '请登录以访问此页面'  # 定义需要登录访问页面的提示消息
-
-@login_manager.user_loader  # 使用user_loader装饰器的回调函数非常重要，他将决定 user 对象是否在登录状态
+# 使用user_loader装饰器的回调函数非常重要，他将决定 user 对象是否在登录状态
+@login_manager.user_loader
 def load_user(code):
     from models import User
     return User.get(code)
-#登录退出等
+
 @app.route('/loginform', methods=['POST'])
 def loginform():
     if request.method == 'POST':
@@ -46,24 +46,31 @@ def login():
 def index():
     return render_template('index.html')
 @app.route('/data')
+@login_required
 def data():
     return render_template('data.html')
 @app.route('/mk1')
-def add():
+@login_required
+def mk1():
     return render_template('mk1.html')
 @app.route('/mk2')
-def gdm():
+@login_required
+def mk2():
     return render_template('mk2.html')
 @app.route('/mk3')
-def edit():
+@login_required
+def mk3():
     return render_template('mk3.html')
 @app.route('/find')
+@login_required
 def find():
     return render_template('find.html')
 @app.route('/count')
+@login_required
 def count():
     return render_template('count.html')
 @app.route('/manager')
+@login_required
 def manager():
     return render_template('manager.html')
 #各种页面表单
