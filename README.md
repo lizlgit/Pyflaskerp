@@ -6,6 +6,7 @@
 1. 安装第三方包：
 >pip3 install flask_sqlalchemy==2.1
 >pip3 install Flask
+>pip3 install flask_login
 2. 数据库使用MYSQL，我转了一个SQL文件，可直接运行，也可通过类生成
 >/SQL/ERPdemo.sql
 3. 启动需要修改的地方
@@ -19,7 +20,7 @@
 #### sqlmath.py--数据操作程序，把要做的内容定义一下，做成函数给主程序使用
 ## 前端说明
 #### 使用layui做的简易前端，感觉并不理想，功能有限，可能重做
-
+#### 登陆页面别人那里拿来的
 ## 接下来准备做的
 #### 页面补全，至少不会跳死
 #### 功能补全
