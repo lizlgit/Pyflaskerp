@@ -65,7 +65,7 @@ class Good_model(db.Model):
         self.gs_code = gs_code
         self.sts = sts
     def __repr__(self):
-        return '<User %r>' % self.model_name
+        return '<Good_model %r>' % self.model_name
 
 class Good_supplier(db.Model):
     gs_code = db.Column(db.Integer,primary_key=True)
@@ -87,7 +87,7 @@ class Good_supplier(db.Model):
         self.sts = sts
 
     def __repr__(self):
-        return '<Goods %r>' % self.supplier
+        return '<Good_supplier %r>' % self.supplier
 
 class Good_log(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -107,4 +107,4 @@ class Good_log(db.Model):
         self.man_register = man_register
 
     def __repr__(self):
-        return '<Goods %r>' % self.supplier
+        return '<Good_log %r>' % self.supplier

@@ -14,3 +14,14 @@ def add_supplier(s1,s2,s3,s4,s5,s6,s7):
     s0 = Good_supplier(supplier=s1,short_name=s2,linkman=s3,telephone=s4,address=s5,other=s6,sts=s7)
     db.session.add(s0)
     db.session.commit()
+
+def mima(usercode,password):
+    s0 = User.query.filter(User.code==usercode ).first()
+    s1 = s0.password
+    s2 = hash_password(password)
+    if s0 == None:
+        return 'ERROR'
+    elif s1 == s2:
+        return usercode
+    else:
+        return 'ERROR'

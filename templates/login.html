@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>登录</title>
-    <link rel="stylesheet" href="/static/layui/css/layui.css">
-  </head>
-  <body>
-    
-  </body>
+<html lang="zh-cn">
+	<head>
+		<title>登录</title>
+		<link rel="shortcut icon" href="/static/img/favicon.ico" />>
+		<link rel="stylesheet" type="text/css" href="/static/css/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/static/iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/login.css"/>
+	</head>
+	<body>
+		<div class="bgImg">
+			<img src="/static/img/login/background.png"/>
+		</div>
+		<form action="/loginform" method="post" style="margin:0px;padding:0px;border:0px solid green">
+			<div class="loginForm">
+				<div class="gb_circle"><img src="/static/img/login/circle.png"></img>
+				</div>
+				<ul>
+					<li class="corpLogo"><img src="/static/img/login/corp_logo.png"></img>
+					</li>
+					<li class="input_general">
+						<div class="pre-logo">
+							<i class="iconfont icon-peoplefill"></i>
+						</div>
+						<input type="text" class="softkey-number-bind" name="usercode" placeholder="工号" maxlength="20" />
+						<div class="right-logo">
+							<i class="iconfont icon-round_close_fill_light"></i>
+						</div>
+					</li>
+					<li class="input_general">
+						<div class="pre-logo">
+							<i class="iconfont icon-lock"></i>
+						</div>
+						<input type="password" class="softkey-number-bind" name="password" placeholder="密码" maxlength="20" />
+						<div class="right-logo">
+							<i class="iconfont icon-round_close_fill_light"></i>
+						</div>
+					</li>
+					<li>
+            <button class="btnLogin">登录</button>
+					</li>
+				</ul>
+			</div>
+		</form>
+	</body>
+	<script type="text/javascript" src="/static/js/jquery-1.8.1.min.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".loginForm").find("input[type!=button]").focusin(function() {
+				$(this).parent().addClass("input_acitve");
+			});
+			$(".loginForm").find("input[type!=button]").focusout(function() {
+				$(this).parent().removeClass("input_acitve");
+			});
+		});
+	</script>
 </html>

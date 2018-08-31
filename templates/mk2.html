@@ -1,0 +1,130 @@
+{% extends 'base.html'%}
+{% block title %}型号管理{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+  <body>
+    <div class="layui-main">
+      <div class="layui-row">
+        <div class="layui-col-md8">
+          <div class="layui-row">
+            <div class="layui-col-md12">
+              <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+              <legend>设备型号录入</legend>
+              </fieldset>
+              <form class="layui-form layui-form-pane" action="/adduser" method="post" lay-filter="example">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">用户</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="user" lay-verify="title" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">工号</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="code" lay-verify="title" autocomplete="off" placeholder="请输入工号" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">密码</label>
+                  <div class="layui-input-block">
+                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">电话</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="telephone" lay-verify="title" autocomplete="off" placeholder="请输入电话" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">是否启用</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="sts" value="1" title="是" checked="">
+                    <input type="radio" name="sts" value="0" title="否">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-danger layui-btn-radius" lay-submit="" lay-filter="demo1">添加用户</button>
+                    <button class="layui-btn layui-btn-radius" type="reset">内容重置</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="layui-col-md12">
+              <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+              <legend>供应商信息录入</legend>
+              </fieldset>
+              <form class="layui-form layui-form-pane" action="/add_supplier" method="post" lay-filter="example">
+                <div class="layui-form-item">
+                  <label class="layui-form-label">供货商</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="supplier" lay-verify="required" placeholder="请输入供货商全称" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">简称</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="short_name" lay-verify="title" autocomplete="off" placeholder="请输入供货商简称" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">联系人</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="linkman" placeholder="请输入联系人姓名" autocomplete="off" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">电话</label>
+                  <div class="layui-input-inline">
+                    <input type="text" name="telephone" lay-verify="title" autocomplete="off" placeholder="请输入电话" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">地址</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="address" lay-verify="title" autocomplete="off" placeholder="请输入地址" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">其他</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="other" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <label class="layui-form-label">供应商状态</label>
+                  <div class="layui-input-block">
+                    <input type="radio" name="sts" value="1" title="合作" checked="">
+                    <input type="radio" name="sts" value="2" title="备选">
+                    <input type="radio" name="sts" value="3" title="预选">
+                    <input type="radio" name="sts" value="4" title="结束">
+                  </div>
+                </div>
+                <div class="layui-form-item">
+                  <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-danger layui-btn-radius" lay-submit="" lay-filter="demo1">添加供应商</button>
+                    <button class="layui-btn layui-btn-radius" type="reset">内容重置</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  </body>
+</html>
+<script src="/static/layui/layui.js"></script>
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+});
+</script>
+{% endblock %}

@@ -2,28 +2,61 @@
 # -*- coding=utf8 -*-
 from flask import Flask
 from flask import render_template,jsonify,request
-from sqlmath import add_user,add_supplier
+from sqlmath import add_user,add_supplier,mima
+from flask_login import LoginManager, login_user, login_required, logout_user
 
 app = Flask(__name__)
+app.secret_key = 'whoisyourdad232311132'
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = "login"  # 定义登录的 视图
+login_manager.login_message = '请登录以访问此页面'  # 定义需要登录访问页面的提示消息
+
+@login_manager.user_loader  # 使用user_loader装饰器的回调函数非常重要，他将决定 user 对象是否在登录状态
+def load_user(code):
+    from models import User
+    return User.get(code)
+#登录退出等
+@app.route('/loginform', methods=['POST'])
+def loginform():
+    if request.method == 'POST':
+        usercode = request.form.get('usercode')
+        password = request.form.get('password')
+        do = mima(usercode,password)
+        if do == usercode:
+            return render_template('index.html')
+        else:
+            return render_template('login.html')
+    else:
+        return 'error'
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()  # 登出用户
+    return '已经退出登录'
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 #路由定义
 @app.route('/')
 def login():
-    return render_template('index.html')
+    return render_template('login.html')
 @app.route('/index')
+@login_required
 def index():
     return render_template('index.html')
 @app.route('/data')
 def data():
     return render_template('data.html')
-@app.route('/add')
+@app.route('/mk1')
 def add():
-    return render_template('add.html')
-@app.route('/gdm')
+    return render_template('mk1.html')
+@app.route('/mk2')
 def gdm():
-    return render_template('gdm.html')
-@app.route('/edit')
+    return render_template('mk2.html')
+@app.route('/mk3')
 def edit():
-    return render_template('edit.html')
+    return render_template('mk3.html')
 @app.route('/find')
 def find():
     return render_template('find.html')
@@ -33,7 +66,7 @@ def count():
 @app.route('/manager')
 def manager():
     return render_template('manager.html')
-#页面请求接收
+#各种页面表单
 @app.route('/adduser', methods=['POST'])
 def adduser():
     if request.method == 'POST':
@@ -60,6 +93,7 @@ def add_supp():
         return render_template('gdm.html')
     else:
         return 'error'
+
 #表格数据接口 未完成
 @app.route('/api/userlist', methods=['GET','POST'])
 def userlist():
