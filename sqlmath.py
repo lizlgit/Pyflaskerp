@@ -20,8 +20,8 @@ def mima(usercode,password):
     s1 = s0.password
     s2 = hash_password(password)
     if s0 == None:
-        return 'ERROR'
+        return 'None'
     elif s1 == s2:
         return usercode
     else:
-        return 'ERROR'
+        return 'None'
