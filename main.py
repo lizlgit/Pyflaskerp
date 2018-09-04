@@ -24,7 +24,7 @@ def loginform():
         password = request.form.get('password')
         do = mima(usercode,password)
         if do == usercode:
-            return render_template('index.html')
+            return render_template('index.html',username=usercode)
         else:
             return render_template('login.html')
     else:
